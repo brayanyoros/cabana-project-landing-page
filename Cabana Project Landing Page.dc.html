@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style id="cp-resets">
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #F4F2ED; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #101010; text-decoration: none; }
+  a:hover { color: #8E8E8E; }
+  ::selection { background: #101010; color: #fff; }
+</style>
+</helmet>
+
+<div style="background:#F4F2ED;color:#101010;overflow-x:hidden;position:relative;">
+
+  <!-- TOP BAR -->
+  <div style="position:fixed;top:0;left:0;right:0;z-index:101;background:#101010;padding:9px clamp(20px,5vw,64px);display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;">
+    <span style="font-size:12px;font-weight:600;letter-spacing:0.04em;color:#F4F2ED;">CONDIÇÃO ESPECIAL DE LANÇAMENTO — PROJETOS A PARTIR DE R$ 197,90 <span style="color:#8E8E8E;">· ATÉ 3X SEM JUROS</span></span>
+    <a href="#projetos" style="font-size:12px;font-weight:600;letter-spacing:0.06em;color:#FFFFFF;border-bottom:1px solid #8E8E8E;padding-bottom:2px;white-space:nowrap;">VER PROJETOS</a>
+  </div>
+
+  <!-- HEADER -->
+  <header style="position:fixed;top:36px;left:0;right:0;z-index:100;background:{{ headerBg }};border-bottom:{{ headerBorder }};transition:background 0.4s ease, border-color 0.4s ease;">
+    <div style="max-width:1280px;margin:0 auto;padding:20px clamp(20px,5vw,64px);display:flex;align-items:center;justify-content:space-between;gap:24px;">
+      <img src="uploads/cabana-project-logo.png" alt="Cabana Project" style="height:28px;width:auto;filter:{{ logoFilter }};transition:filter 0.4s ease;" />
+      <sc-if value="{{ showNav }}" hint-placeholder-val="{{ true }}">
+        <nav style="display:flex;align-items:center;gap:36px;">
+          <a href="#projetos" style="font-size:14px;font-weight:500;color:{{ navColor }};">Projetos</a>
+          <a href="#como-funciona" style="font-size:14px;font-weight:500;color:{{ navColor }};">Como funciona</a>
+          <a href="#receber" style="font-size:14px;font-weight:500;color:{{ navColor }};">O que você recebe</a>
+          <a href="#marca" style="font-size:14px;font-weight:500;color:{{ navColor }};">Sobre</a>
+          <a href="#faq" style="font-size:14px;font-weight:500;color:{{ navColor }};">Dúvidas</a>
+        </nav>
+      </sc-if>
+      <a href="#projetos" style="flex-shrink:0;white-space:nowrap;background:{{ headerBtnBg }};color:{{ headerBtnColor }};padding:13px 26px;font-size:13px;font-weight:600;letter-spacing:0.06em;border:1px solid {{ headerBtnBorder }};">VER PROJETOS</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="cp-hero" style="position:relative;min-height:100vh;display:flex;align-items:stretch;">
+    <div style="position:absolute;inset:0;">
+      <image-slot id="hero-bg" shape="rect" placeholder="Composição/foto premium representando a coleção de chalés (natureza + arquitetura)"></image-slot>
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(16,16,16,0.55) 0%, rgba(16,16,16,0.15) 35%, rgba(16,16,16,0.05) 55%, rgba(16,16,16,0.6) 100%);pointer-events:none;"></div>
+    </div>
+    <div style="position:relative;z-index:2;width:100%;display:flex;flex-direction:column;justify-content:flex-end;max-width:1280px;margin:0 auto;padding:160px clamp(20px,5vw,64px) 80px;">
+      <h1 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(40px,7.5vw,88px);line-height:1.03;letter-spacing:-0.02em;color:#FFFFFF;margin:0 0 28px;max-width:820px;">PROJETOS PARA<br/>TIRAR SEU CHALÉ<br/>DO PAPEL.</h1>
+      <p style="font-size:clamp(16px,1.6vw,19px);line-height:1.6;color:#F4F2ED;max-width:520px;margin:0 0 40px;font-weight:400;">Manuais, projetos e materiais técnicos desenvolvidos para diferentes modelos de chalés.</p>
+      <div style="margin-bottom:32px;">
+        <div style="font-size:12px;font-weight:600;letter-spacing:0.1em;color:#D9D9D9;margin-bottom:6px;">CONDIÇÕES ESPECIAIS DE LANÇAMENTO</div>
+        <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;">
+          <span style="font-size:14px;color:#F4F2ED;">Projetos a partir de</span>
+          <span style="font-family:'Manrope',sans-serif;font-size:26px;font-weight:800;color:#FFFFFF;">R$ 197,90</span>
+          <span style="font-size:14px;color:#F4F2ED;">ou em até 3x sem juros</span>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-bottom:44px;">
+        <a href="#projetos" style="background:#FFFFFF;color:#101010;padding:19px 40px;font-size:14px;font-weight:600;letter-spacing:0.06em;transition:background 0.25s ease, transform 0.25s ease;" style-hover="background:#F4F2ED;transform:translateY(-2px);">CONHECER OS PROJETOS</a>
+        <a href="#como-funciona" style="color:#FFFFFF;font-size:14px;font-weight:600;letter-spacing:0.04em;border-bottom:1px solid rgba(255,255,255,0.5);padding-bottom:4px;">COMO FUNCIONA</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STICKY MOBILE BAR -->
+  <sc-if value="{{ showStickyBar }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;bottom:0;left:0;right:0;z-index:200;background:#FFFFFF;border-top:1px solid #D9D9D9;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;box-shadow:0 -8px 24px rgba(16,16,16,0.08);">
+      <div>
+        <div style="font-size:11px;color:#8E8E8E;">A partir de</div>
+        <div style="font-size:16px;font-weight:700;font-family:'Manrope',sans-serif;color:#101010;">R$ 197,90</div>
+      </div>
+      <a href="#projetos" style="background:#101010;color:#FFFFFF;padding:13px 24px;font-size:13px;font-weight:600;letter-spacing:0.05em;flex-shrink:0;white-space:nowrap;">VER PROJETOS</a>
+    </div>
+  </sc-if>
+
+  <!-- 03: INTRODUÇÃO DA MARCA -->
+  <section id="marca" style="max-width:1280px;margin:0 auto;padding:clamp(80px,10vw,140px) clamp(20px,5vw,64px);">
+    <div data-reveal-id="intro" style="{{ reveal.intro }}display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,6vw,96px);align-items:start;">
+      <h2 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(30px,4.2vw,48px);line-height:1.12;letter-spacing:-0.01em;margin:0;">ESCOLHA O CHALÉ.<br/>ENTENDA O PROJETO.<br/>PLANEJE A EXECUÇÃO.</h2>
+      <div>
+        <p style="font-size:clamp(16px,1.6vw,18px);line-height:1.7;color:#252525;margin:0 0 40px;max-width:480px;">A Cabana Project reúne materiais técnicos digitais desenvolvidos para diferentes modelos de chalés, organizando informações que ajudam a compreender melhor cada construção e seu processo de execução.</p>
+        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px;background:#D9D9D9;">
+          <image-slot id="intro-final" shape="rect" style="aspect-ratio:1/1;" placeholder="Chalé finalizado"></image-slot>
+          <image-slot id="intro-drawing" shape="rect" style="aspect-ratio:1/1;" placeholder="Desenho técnico"></image-slot>
+          <image-slot id="intro-structure" shape="rect" style="aspect-ratio:1/1;" placeholder="Estrutura"></image-slot>
+          <image-slot id="intro-manual" shape="rect" style="aspect-ratio:1/1;" placeholder="Página do manual"></image-slot>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04: PROJETOS DISPONÍVEIS -->
+  <section id="projetos" style="background:#101010;padding:clamp(80px,10vw,140px) 0;">
+    <div data-reveal-id="projetos" style="{{ reveal.projetos }}max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,64px);">
+      <h2 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(30px,4.5vw,52px);line-height:1.1;color:#FFFFFF;margin:0 0 64px;">ESCOLHA SEU PROJETO.</h2>
+
+      <!-- Modelo 1: 15m2 -->
+      <div style="display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center;padding-bottom:80px;border-bottom:1px solid #252525;margin-bottom:80px;">
+        <image-slot id="model-15-hero" shape="rect" style="aspect-ratio:4/5;" placeholder="Foto/render do Chalé Compacto 15m²"></image-slot>
+        <div>
+          <div style="font-size:12px;font-weight:600;letter-spacing:0.1em;color:#8E8E8E;margin-bottom:12px;">MODELO 01</div>
+          <h3 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(28px,3.6vw,40px);color:#FFFFFF;margin:0 0 20px;">CHALÉ COMPACTO<br/>15M²</h3>
+          <div style="display:flex;gap:20px;flex-wrap:wrap;margin-bottom:20px;">
+            <span style="font-size:13px;color:#D9D9D9;">15m²</span><span style="color:#252525;">·</span>
+            <span style="font-size:13px;color:#D9D9D9;">Compacto</span><span style="color:#252525;">·</span>
+            <span style="font-size:13px;color:#D9D9D9;">Estrutura metálica</span>
+          </div>
+          <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;color:#101010;background:#FFFFFF;padding:4px 10px;width:max-content;margin-bottom:16px;">OFERTA DE LANÇAMENTO</div>
+          <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:6px;">
+            <span style="font-size:14px;color:#8E8E8E;text-decoration:line-through;">De R$ 247,90</span>
+            <span style="font-family:'Manrope',sans-serif;font-size:28px;font-weight:800;color:#FFFFFF;">R$ 197,90</span>
+          </div>
+          <div style="font-size:13px;color:#D9D9D9;margin-bottom:8px;">ou 3x de R$ 65,97 sem juros</div>
+          <div style="font-size:12px;color:#8E8E8E;margin-bottom:28px;">Economize R$ 50</div>
+          <a href="Cabana Project - 15m2 (Pagina Individual).dc.html" style="display:inline-block;background:#FFFFFF;color:#101010;padding:16px 32px;font-size:13px;font-weight:600;letter-spacing:0.05em;">CONHECER PROJETO 15M²</a>
+        </div>
+      </div>
+
+      <!-- Modelo 2: 31m2 -->
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(32px,5vw,72px);align-items:center;padding-bottom:80px;border-bottom:1px solid #252525;margin-bottom:80px;">
+        <div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+            <span style="font-size:12px;font-weight:600;letter-spacing:0.1em;color:#8E8E8E;">MODELO 02</span>
+            <span style="font-size:11px;font-weight:600;letter-spacing:0.08em;color:#101010;background:#FFFFFF;padding:4px 10px;">EM DESTAQUE</span>
+          </div>
+          <h3 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(28px,3.6vw,40px);color:#FFFFFF;margin:0 0 20px;">CHALÉ A-FRAME<br/>31M²</h3>
+          <div style="display:flex;gap:20px;flex-wrap:wrap;margin-bottom:24px;">
+            <span style="font-size:13px;color:#D9D9D9;">31m²</span><span style="color:#252525;">·</span>
+            <span style="font-size:13px;color:#D9D9D9;">A-Frame</span><span style="color:#252525;">·</span>
+            <span style="font-size:13px;color:#D9D9D9;">Mezanino</span><span style="color:#252525;">·</span>
+            <span style="font-size:13px;color:#D9D9D9;">Estrutura metálica</span>
+          </div>
+          <div style="font-size:13px;color:#8E8E8E;margin-bottom:8px;">Manual de Montagem</div>
+          <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;color:#101010;background:#FFFFFF;padding:4px 10px;width:max-content;margin-bottom:16px;">OFERTA DE LANÇAMENTO</div>
+          <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:6px;">
+            <span style="font-size:14px;color:#8E8E8E;text-decoration:line-through;">De R$ 297,90</span>
+            <span style="font-family:'Manrope',sans-serif;font-size:28px;font-weight:800;color:#FFFFFF;">R$ 247,90</span>
+          </div>
+          <div style="font-size:13px;color:#D9D9D9;margin-bottom:8px;">ou 3x de R$ 82,63 sem juros</div>
+          <div style="font-size:12px;color:#8E8E8E;margin-bottom:28px;">Economize R$ 50</div>
+          <a href="Cabana Project - 31m2 (Pagina Individual).dc.html" style="display:inline-block;background:#FFFFFF;color:#101010;padding:16px 32px;font-size:13px;font-weight:600;letter-spacing:0.05em;">CONHECER PROJETO 31M²</a>
+        </div>
+        <image-slot id="model-31-hero" shape="rect" style="aspect-ratio:4/5;" placeholder="Foto/render do Chalé A-Frame 31m²"></image-slot>
+      </div>
+
+      <!-- Modelo 3: 31+5 -->
+      <div style="display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center;">
+        <image-slot id="model-36-hero" shape="rect" style="aspect-ratio:4/5;" placeholder="Foto/render do Chalé A-Frame 31m² + Anexo 5m² (mostrando os dois volumes)"></image-slot>
+        <div>
+          <div style="font-size:12px;font-weight:600;letter-spacing:0.1em;color:#8E8E8E;margin-bottom:12px;">MODELO 03</div>
+          <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;color:#101010;background:#FFFFFF;padding:4px 10px;width:max-content;margin-bottom:16px;">VERSÃO AMPLIADA</div>
+          <h3 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(28px,3.6vw,40px);color:#FFFFFF;margin:0 0 20px;">CHALÉ A-FRAME 31M²<br/>+ ANEXO DE 5M²</h3>
+          <p style="font-size:15px;line-height:1.7;color:#D9D9D9;margin:0 0 24px;max-width:440px;">Versão ampliada do Chalé A-Frame de 31m², acrescentando um anexo de 5m² com estrutura metálica e totalizando 36m² de área.</p>
+          <div style="display:flex;align-items:center;gap:16px;margin-bottom:32px;flex-wrap:wrap;">
+            <div style="text-align:center;"><div style="font-family:'Manrope',sans-serif;font-size:22px;font-weight:800;color:#FFFFFF;">31M²</div><div style="font-size:11px;color:#8E8E8E;letter-spacing:0.04em;">CHALÉ PRINCIPAL</div></div>
+            <span style="color:#8E8E8E;font-size:20px;">+</span>
+            <div style="text-align:center;"><div style="font-family:'Manrope',sans-serif;font-size:22px;font-weight:800;color:#FFFFFF;">5M²</div><div style="font-size:11px;color:#8E8E8E;letter-spacing:0.04em;">ANEXO</div></div>
+            <span style="color:#8E8E8E;font-size:20px;">=</span>
+            <div style="text-align:center;"><div style="font-family:'Manrope',sans-serif;font-size:22px;font-weight:800;color:#FFFFFF;">36M²</div><div style="font-size:11px;color:#8E8E8E;letter-spacing:0.04em;">ÁREA TOTAL</div></div>
+          </div>
+          <div style="font-size:13px;color:#8E8E8E;margin-bottom:8px;">Manual de Montagem / Material do Projeto</div>
+          <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;color:#101010;background:#FFFFFF;padding:4px 10px;width:max-content;margin-bottom:16px;">OFERTA DE LANÇAMENTO</div>
+          <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:6px;">
+            <span style="font-size:14px;color:#8E8E8E;text-decoration:line-through;">De R$ 347,90</span>
+            <span style="font-family:'Manrope',sans-serif;font-size:28px;font-weight:800;color:#FFFFFF;">R$ 297,90</span>
+          </div>
+          <div style="font-size:13px;color:#D9D9D9;margin-bottom:8px;">ou 3x de R$ 99,30 sem juros</div>
+          <div style="font-size:12px;color:#8E8E8E;margin-bottom:28px;">Economize R$ 50</div>
+          <a href="Cabana Project - 31m2+Anexo 36m2 (Pagina Individual).dc.html" style="display:inline-block;background:#FFFFFF;color:#101010;padding:16px 32px;font-size:13px;font-weight:600;letter-spacing:0.05em;">CONHECER PROJETO 31M² + ANEXO</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05: COMPARADOR -->
+  <section style="background:#FFFFFF;padding:clamp(80px,10vw,140px) 0;">
+    <div data-reveal-id="comparador" style="{{ reveal.comparador }}max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,64px);">
+      <h2 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(30px,4.5vw,48px);line-height:1.1;margin:0 0 12px;">QUAL PROJETO<br/>COMBINA COM VOCÊ?</h2>
+      <p style="font-size:13px;color:#8E8E8E;margin:0 0 56px;">Condição promocional sujeita a atualização após o período de lançamento.</p>
+      <div style="overflow-x:auto;">
+        <div style="min-width:640px;display:grid;grid-template-columns:minmax(140px,1fr) repeat(3,minmax(140px,1fr));">
+          <div></div>
+          <div style="padding:0 16px 24px;font-family:'Manrope',sans-serif;font-weight:700;font-size:16px;">15M²</div>
+          <div style="padding:0 16px 24px;font-family:'Manrope',sans-serif;font-weight:700;font-size:16px;">31M²</div>
+          <div style="padding:0 16px 24px;font-family:'Manrope',sans-serif;font-weight:700;font-size:16px;">31M² + ANEXO<br/>36M² TOTAIS</div>
+          <sc-for list="{{ comparatorRows }}" as="row" hint-placeholder-count="8">
+            <div style="padding:18px 0;border-top:1px solid #D9D9D9;font-size:14px;font-weight:600;color:#252525;">{{ row.label }}</div>
+            <div style="padding:18px 16px;border-top:1px solid #D9D9D9;font-size:14px;color:#252525;">{{ row.v15 }}</div>
+            <div style="padding:18px 16px;border-top:1px solid #D9D9D9;font-size:14px;color:#252525;">{{ row.v31 }}</div>
+            <div style="padding:18px 16px;border-top:1px solid #D9D9D9;font-size:14px;color:#252525;">{{ row.v36 }}</div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06: GALERIA COLEÇÃO -->
+  <section style="max-width:1280px;margin:0 auto;padding:clamp(80px,10vw,140px) clamp(20px,5vw,64px);">
+    <div data-reveal-id="galeria" style="{{ reveal.galeria }}">
+      <h2 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(30px,4.5vw,52px);line-height:1.1;margin:0 0 56px;">TRÊS MODELOS.<br/>DIFERENTES POSSIBILIDADES.</h2>
+      <div style="display:grid;grid-template-columns:repeat(4,minmax(160px,1fr));grid-template-rows:repeat(2,minmax(160px,1fr));gap:12px;">
+        <image-slot id="col-main" shape="rect" style="grid-column:span 2;grid-row:span 2;" placeholder="Exterior — imagem principal"></image-slot>
+        <image-slot id="col-b" shape="rect" style="grid-column:span 2;" placeholder="Interior"></image-slot>
+        <image-slot id="col-c" shape="rect" placeholder="Estrutura / desenho técnico"></image-slot>
+        <image-slot id="col-d" shape="rect" placeholder="Detalhe arquitetônico"></image-slot>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07: DA IMAGEM PARA EXECUÇÃO -->
+  <section style="background:#101010;padding:clamp(80px,10vw,140px) 0;">
+    <div data-reveal-id="execucao" style="{{ reveal.execucao }}max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,64px);">
+      <h2 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(30px,4.5vw,52px);line-height:1.1;color:#FFFFFF;margin:0 0 56px;">DA IMAGEM<br/>PARA A EXECUÇÃO.</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:24px;margin-bottom:56px;">
+        <sc-for list="{{ executionSteps }}" as="step" hint-placeholder-count="5">
+          <div>
+            <div style="font-family:'Manrope',sans-serif;font-size:13px;font-weight:600;color:#8E8E8E;margin-bottom:12px;">{{ step.n }}</div>
+            <div style="font-size:14px;font-weight:600;color:#FFFFFF;letter-spacing:0.02em;">{{ step.t }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <p style="font-size:15px;line-height:1.7;color:#D9D9D9;max-width:640px;margin:0;">Os materiais da Cabana Project podem incluir, dependendo de cada produto, manual de montagem, plantas, detalhamentos, lista de materiais, referências estruturais e materiais complementares. Cada produto informa individualmente o que está incluso.</p>
+    </div>
+  </section>
+
+  <!-- BLOCO DE OPORTUNIDADE -->
+  <section style="background:#101010;padding:clamp(64px,8vw,100px) 0;">
+    <div data-reveal-id="oportunidade" style="{{ reveal.oportunidade }}max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,64px);">
+      <h2 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(28px,4vw,44px);line-height:1.15;color:#FFFFFF;margin:0 0 16px;max-width:640px;">SE VOCÊ JÁ PENSA<br/>EM CONSTRUIR,<br/>COMECE PELO PROJETO.</h2>
+      <p style="font-size:15px;color:#D9D9D9;margin:0 0 40px;max-width:480px;">A coleção Cabana Project está disponível em condição especial de lançamento.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:28px;margin-bottom:40px;border-top:1px solid #252525;padding-top:32px;">
+        <sc-for list="{{ offerModels }}" as="m" hint-placeholder-count="3">
+          <div>
+            <div style="font-family:'Manrope',sans-serif;font-size:15px;font-weight:700;color:#FFFFFF;margin-bottom:8px;">{{ m.name }}</div>
+            <div style="font-family:'Manrope',sans-serif;font-size:22px;font-weight:800;color:#FFFFFF;margin-bottom:4px;">{{ m.price }}</div>
+            <div style="font-size:13px;color:#8E8E8E;">{{ m.installment }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <a href="#projetos" style="display:inline-block;background:#FFFFFF;color:#101010;padding:18px 40px;font-size:13px;font-weight:600;letter-spacing:0.05em;">ESCOLHER MEU PROJETO</a>
+    </div>
+  </section>
+
+  <!-- 08: COMO FUNCIONA -->
+  <section id="como-funciona" style="background:#F4F2ED;padding:clamp(80px,10vw,140px) 0;">
+    <div data-reveal-id="comofunciona" style="{{ reveal.comofunciona }}max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,64px);">
+      <h2 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(30px,4.5vw,48px);line-height:1.1;margin:0 0 56px;">ESCOLHA. ACESSE. PLANEJE.</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:28px;align-items:start;">
+        <sc-for list="{{ howSteps }}" as="step" hint-placeholder-count="5">
+          <div style="border-top:1px solid #D9D9D9;padding-top:24px;">
+            <div style="font-family:'Manrope',sans-serif;font-size:14px;font-weight:600;color:#8E8E8E;margin-bottom:16px;">{{ step.n }}</div>
+            <div style="font-family:'Manrope',sans-serif;font-size:18px;font-weight:700;margin-bottom:8px;">{{ step.t }}</div>
+            <div style="font-size:14px;color:#252525;line-height:1.5;">{{ step.d }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09: DESTAQUE 31M2 -->
+  <section style="position:relative;min-height:80vh;display:flex;align-items:flex-end;">
+    <div style="position:absolute;inset:0;">
+      <image-slot id="highlight-31" shape="rect" placeholder="Fotografia/render grande do Chalé A-Frame 31m²"></image-slot>
+      <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(16,16,16,0.05) 0%, rgba(16,16,16,0.7) 100%);"></div>
+    </div>
+    <div data-reveal-id="destaque31" style="{{ reveal.destaque31 }}position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:80px clamp(20px,5vw,64px);width:100%;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:40px;">
+      <div>
+        <h2 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(32px,5vw,58px);line-height:1.05;color:#FFFFFF;margin:0 0 12px;">CHALÉ A-FRAME<br/>31M².</h2>
+        <p style="font-size:16px;color:#D9D9D9;margin:0 0 20px;">Um dos modelos em destaque da Cabana Project.</p>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;">
+          <span style="font-size:12px;color:#D9D9D9;">31m² · A-Frame · Mezanino · Estrutura metálica</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;color:#101010;background:#FFFFFF;padding:4px 10px;width:max-content;margin-bottom:14px;">CONDIÇÃO ESPECIAL DE LANÇAMENTO</div>
+        <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:6px;">
+          <span style="font-size:15px;color:#D9D9D9;text-decoration:line-through;">De R$ 297,90</span>
+          <span style="font-family:'Manrope',sans-serif;font-size:30px;font-weight:800;color:#FFFFFF;">R$ 247,90</span>
+        </div>
+        <div style="font-size:13px;color:#D9D9D9;margin-bottom:6px;">ou 3x de R$ 82,63 sem juros</div>
+        <div style="font-size:12px;color:#8E8E8E;margin-bottom:20px;">Economize R$ 50</div>
+        <a href="Cabana Project - 31m2 (Pagina Individual).dc.html" style="display:inline-block;background:#FFFFFF;color:#101010;padding:16px 32px;font-size:13px;font-weight:600;letter-spacing:0.05em;">GARANTIR CONDIÇÃO ATUAL</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10: DESTAQUE 31+5 -->
+  <section style="background:#FFFFFF;padding:clamp(80px,10vw,140px) 0;">
+    <div data-reveal-id="destaque36" style="{{ reveal.destaque36 }}max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,64px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(40px,6vw,96px);align-items:center;">
+      <div>
+        <h2 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(30px,4.2vw,48px);line-height:1.1;margin:0 0 12px;">31M²<br/>+ 5M² DE ANEXO.</h2>
+        <p style="font-size:16px;color:#252525;margin:0 0 24px;max-width:420px;">O Chalé A-Frame de 31m² em uma configuração ampliada, totalizando 36m².</p>
+        <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;color:#FFFFFF;background:#101010;padding:4px 10px;width:max-content;margin-bottom:16px;">CONDIÇÃO ESPECIAL DE LANÇAMENTO</div>
+        <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:6px;">
+          <span style="font-size:15px;color:#8E8E8E;text-decoration:line-through;">De R$ 347,90</span>
+          <span style="font-family:'Manrope',sans-serif;font-size:30px;font-weight:800;">R$ 297,90</span>
+        </div>
+        <div style="font-size:13px;color:#252525;margin-bottom:6px;">ou 3x de R$ 99,30 sem juros</div>
+        <div style="font-size:12px;color:#8E8E8E;margin-bottom:20px;">Economize R$ 50</div>
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:32px;flex-wrap:wrap;">
+          <div style="text-align:center;"><div style="font-family:'Manrope',sans-serif;font-size:24px;font-weight:800;">31M²</div><div style="font-size:11px;color:#8E8E8E;letter-spacing:0.04em;">CHALÉ PRINCIPAL</div></div>
+          <span style="color:#8E8E8E;font-size:22px;">+</span>
+          <div style="text-align:center;"><div style="font-family:'Manrope',sans-serif;font-size:24px;font-weight:800;">5M²</div><div style="font-size:11px;color:#8E8E8E;letter-spacing:0.04em;">ANEXO</div></div>
+          <span style="color:#8E8E8E;font-size:22px;">=</span>
+          <div style="text-align:center;"><div style="font-family:'Manrope',sans-serif;font-size:24px;font-weight:800;">36M²</div><div style="font-size:11px;color:#8E8E8E;letter-spacing:0.04em;">TOTAL</div></div>
+        </div>
+        <a href="Cabana Project - 31m2+Anexo 36m2 (Pagina Individual).dc.html" style="display:inline-block;background:#101010;color:#FFFFFF;padding:16px 32px;font-size:13px;font-weight:600;letter-spacing:0.05em;">GARANTIR CONDIÇÃO ATUAL</a>
+      </div>
+      <div style="position:relative;">
+        <image-slot id="highlight-36" shape="rect" style="aspect-ratio:4/3;" placeholder="Render/planta mostrando claramente o chalé principal de 31m² e o anexo de 5m² lado a lado"></image-slot>
+        <div style="position:absolute;top:16px;right:16px;background:rgba(16,16,16,0.85);color:#FFFFFF;font-size:11px;font-weight:600;letter-spacing:0.06em;padding:6px 12px;">ANEXO 5M²</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11: PREVIEW MATERIAIS -->
+  <section style="background:#F4F2ED;padding:clamp(80px,10vw,140px) 0;">
+    <div data-reveal-id="preview" style="{{ reveal.preview }}max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,64px);">
+      <h2 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(30px,4.5vw,48px);line-height:1.1;margin:0 0 56px;">VEJA O NÍVEL<br/>DE DETALHAMENTO.</h2>
+      <div style="display:grid;grid-template-columns:repeat(4,minmax(140px,1fr));gap:16px;">
+        <image-slot id="mat-1" shape="rect" style="aspect-ratio:3/4;" placeholder="Planta"></image-slot>
+        <image-slot id="mat-2" shape="rect" style="aspect-ratio:3/4;" placeholder="Estrutura"></image-slot>
+        <image-slot id="mat-3" shape="rect" style="aspect-ratio:3/4;" placeholder="Desenho técnico"></image-slot>
+        <image-slot id="mat-4" shape="rect" style="aspect-ratio:3/4;" placeholder="Lista de materiais"></image-slot>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12: PARA QUEM É -->
+  <section style="background:#FFFFFF;padding:clamp(80px,10vw,140px) 0;">
+    <div data-reveal-id="paraquem" style="{{ reveal.paraquem }}max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,64px);">
+      <h2 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(30px,4.5vw,52px);line-height:1.1;margin:0 0 56px;max-width:640px;">PROJETOS PARA QUEM<br/>QUER CONSTRUIR.</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;border-top:1px solid #D9D9D9;">
+        <sc-for list="{{ publics }}" as="p" hint-placeholder-count="3">
+          <div style="padding:32px 24px 32px 0;border-right:1px solid #D9D9D9;">
+            <div style="font-family:'Manrope',sans-serif;font-size:13px;font-weight:600;color:#8E8E8E;margin-bottom:16px;">{{ p.n }}</div>
+            <div style="font-family:'Manrope',sans-serif;font-size:22px;font-weight:700;margin-bottom:12px;">{{ p.title }}</div>
+            <p style="font-size:14px;line-height:1.6;color:#252525;margin:0;">{{ p.desc }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13: UM MODELO PARA CADA ESCALA -->
+  <section style="background:#101010;padding:clamp(80px,10vw,140px) 0;">
+    <div data-reveal-id="escala" style="{{ reveal.escala }}max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,64px);">
+      <h2 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(30px,4.5vw,48px);line-height:1.1;color:#FFFFFF;margin:0 0 56px;">UM PROJETO<br/>PARA CADA ESCALA.</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(220px,1fr));gap:0;border-top:1px solid #252525;">
+        <sc-for list="{{ scaleBlocks }}" as="block" hint-placeholder-count="3">
+          <div style="padding:32px 24px 0 0;border-right:1px solid #252525;">
+            <div style="font-family:'Manrope',sans-serif;font-size:clamp(26px,3vw,34px);font-weight:800;color:#FFFFFF;margin-bottom:8px;">{{ block.area }}</div>
+            <div style="font-size:12px;font-weight:600;letter-spacing:0.08em;color:#8E8E8E;margin-bottom:16px;">{{ block.tag }}</div>
+            <p style="font-size:14px;line-height:1.6;color:#D9D9D9;margin:0;">{{ block.desc }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14: EXPLORE A COLEÇÃO -->
+  <section id="receber" style="background:#F4F2ED;padding:clamp(80px,10vw,140px) 0;">
+    <div data-reveal-id="explore" style="{{ reveal.explore }}max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,64px);">
+      <h2 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(30px,4.5vw,48px);line-height:1.1;margin:0 0 56px;">EXPLORE A COLEÇÃO.</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(200px,1fr));gap:32px;">
+        <sc-for list="{{ exploreItems }}" as="item" hint-placeholder-count="3">
+          <div style="border-top:1px solid #D9D9D9;padding-top:24px;">
+            <div style="font-family:'Manrope',sans-serif;font-size:22px;font-weight:800;margin-bottom:16px;">{{ item.title }}</div>
+            <a href="{{ item.href }}" style="font-size:13px;font-weight:600;letter-spacing:0.05em;border-bottom:1px solid #101010;padding-bottom:6px;">VER PROJETO</a>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- 15: FAQ -->
+  <section id="faq" style="background:#FFFFFF;padding:clamp(80px,10vw,140px) 0;">
+    <div data-reveal-id="faq" style="{{ reveal.faq }}max-width:900px;margin:0 auto;padding:0 clamp(20px,5vw,64px);">
+      <h2 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(30px,4.5vw,44px);line-height:1.1;margin:0 0 12px;">DÚVIDAS FREQUENTES.</h2>
+      <p style="font-size:13px;color:#8E8E8E;margin:0 0 56px;">Garanta o projeto pelo valor promocional atual.</p>
+      <div>
+        <sc-for list="{{ faqs }}" as="item" hint-placeholder-count="14">
+          <div style="border-top:1px solid #D9D9D9;">
+            <div onClick="{{ item.toggle }}" style="padding:22px 0;display:flex;align-items:center;justify-content:space-between;gap:20px;cursor:pointer;">
+              <span style="font-family:'Manrope',sans-serif;font-size:clamp(15px,1.7vw,18px);font-weight:600;">{{ item.q }}</span>
+              <span style="font-size:20px;font-weight:400;flex-shrink:0;color:#8E8E8E;">{{ item.sign }}</span>
+            </div>
+            <div style="{{ item.bodyStyle }}">
+              <p style="font-size:15px;line-height:1.6;color:#252525;margin:0 0 22px;max-width:640px;">{{ item.a }}</p>
+            </div>
+          </div>
+        </sc-for>
+        <div style="border-top:1px solid #D9D9D9;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 16: AVISO TÉCNICO -->
+  <section style="background:#F4F2ED;padding:clamp(56px,7vw,96px) 0;">
+    <div data-reveal-id="aviso" style="{{ reveal.aviso }}max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,64px);display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:32px;border-top:1px solid #D9D9D9;border-bottom:1px solid #D9D9D9;padding-top:32px;padding-bottom:32px;">
+      <div style="font-size:13px;font-weight:600;letter-spacing:0.08em;color:#252525;">INFORMAÇÃO IMPORTANTE.</div>
+      <p style="font-size:14px;line-height:1.7;color:#252525;margin:0;max-width:720px;">Os materiais comercializados pela Cabana Project possuem caráter orientativo e são desenvolvidos com base nos modelos apresentados. Características específicas de terreno, fundação, estrutura, instalações, condições locais e exigências legais podem demandar análise e adaptações. A execução deve respeitar as normas técnicas aplicáveis e contar com profissionais habilitados quando necessário.</p>
+    </div>
+  </section>
+
+  <!-- 17: CTA FINAL -->
+  <section style="position:relative;min-height:70vh;display:flex;align-items:center;justify-content:center;">
+    <div style="position:absolute;inset:0;">
+      <image-slot id="ctafinal-bg" shape="rect" placeholder="Composição com os três modelos de chalé"></image-slot>
+      <div style="position:absolute;inset:0;background:rgba(16,16,16,0.6);"></div>
+    </div>
+    <div data-reveal-id="ctafinal" style="{{ reveal.ctafinal }}position:relative;z-index:2;text-align:center;padding:0 clamp(20px,5vw,64px);max-width:1000px;margin:0 auto;">
+      <h2 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(34px,5.5vw,60px);line-height:1.05;color:#FFFFFF;margin:0 0 16px;">SEU CHALÉ<br/>PODE COMEÇAR<br/>POR AQUI.</h2>
+      <p style="font-size:16px;color:#D9D9D9;margin:0 0 44px;max-width:520px;margin-left:auto;margin-right:auto;">Escolha o modelo, garanta a condição atual e tenha acesso ao material para começar seu planejamento.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px;margin-bottom:36px;">
+        <sc-for list="{{ finalOffers }}" as="o" hint-placeholder-count="3">
+          <div style="border-top:1px solid rgba(255,255,255,0.2);padding-top:24px;">
+            <div style="font-family:'Manrope',sans-serif;font-size:14px;font-weight:700;color:#FFFFFF;margin-bottom:10px;">{{ o.name }}</div>
+            <div style="font-size:13px;color:#8E8E8E;text-decoration:line-through;margin-bottom:2px;">De {{ o.old }}</div>
+            <div style="font-family:'Manrope',sans-serif;font-size:22px;font-weight:800;color:#FFFFFF;margin-bottom:4px;">{{ o.price }}</div>
+            <div style="font-size:12px;color:#D9D9D9;margin-bottom:16px;">{{ o.installment }}</div>
+            <a href="{{ o.href }}" style="display:inline-block;background:#FFFFFF;color:#101010;padding:13px 24px;font-size:12px;font-weight:600;letter-spacing:0.05em;">{{ o.cta }}</a>
+          </div>
+        </sc-for>
+      </div>
+      <div style="font-size:12px;color:#8E8E8E;letter-spacing:0.05em;">CONDIÇÃO ESPECIAL DA FASE DE LANÇAMENTO.</div>
+    </div>
+  </section>
+
+  <!-- 18: FOOTER -->
+  <footer style="background:#101010;padding:64px 0 32px;">
+    <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,64px);">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:48px;padding-bottom:48px;border-bottom:1px solid #252525;">
+        <img src="uploads/cabana-project-logo.png" alt="Cabana Project" style="height:30px;filter:invert(1) brightness(1.4);" />
+        <div style="display:flex;gap:48px;flex-wrap:wrap;">
+          <div>
+            <div style="font-size:12px;font-weight:600;letter-spacing:0.06em;color:#8E8E8E;margin-bottom:12px;">PROJETOS</div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <a href="Cabana Project - 15m2 (Pagina Individual).dc.html" style="font-size:14px;color:#D9D9D9;" style-hover="color:#8E8E8E;">15m²</a>
+              <a href="Cabana Project - 31m2 (Pagina Individual).dc.html" style="font-size:14px;color:#D9D9D9;" style-hover="color:#8E8E8E;">31m²</a>
+              <a href="Cabana Project - 31m2+Anexo 36m2 (Pagina Individual).dc.html" style="font-size:14px;color:#D9D9D9;" style-hover="color:#8E8E8E;">31m² + Anexo de 5m² (36m² totais)</a>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:12px;font-weight:600;letter-spacing:0.06em;color:#8E8E8E;margin-bottom:12px;">INSTITUCIONAL</div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <a href="#marca" style="font-size:14px;color:#D9D9D9;" style-hover="color:#8E8E8E;">Sobre</a>
+              <a href="#" style="font-size:14px;color:#D9D9D9;" style-hover="color:#8E8E8E;">Contato</a>
+              <a href="#" style="font-size:14px;color:#D9D9D9;" style-hover="color:#8E8E8E;">Suporte</a>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:12px;font-weight:600;letter-spacing:0.06em;color:#8E8E8E;margin-bottom:12px;">LEGAL</div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <a href="#" style="font-size:14px;color:#D9D9D9;" style-hover="color:#8E8E8E;">Termos de Uso</a>
+              <a href="#" style="font-size:14px;color:#D9D9D9;" style-hover="color:#8E8E8E;">Política de Privacidade</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding-top:24px;">
+        <span style="font-size:12px;color:#666;">CNPJ 00.000.000/0000-00</span>
+        <span style="font-size:12px;color:#666;">contato@cabanaproject.com.br</span>
+        <span style="font-size:12px;color:#666;">WhatsApp (00) 00000-0000</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { revealed: {}, isMobile: (typeof window !== 'undefined' && window.innerWidth < 880), scrolled: false, showSticky: false, openFaq: null };
+
+  componentDidMount() {
+    this._observer = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          const id = e.target.getAttribute('data-reveal-id');
+          this.setState((s) => ({ revealed: { ...s.revealed, [id]: true } }));
+          this._observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('[data-reveal-id]').forEach((el) => this._observer.observe(el));
+
+    this._onResize = () => this.setState({ isMobile: window.innerWidth < 880 });
+    window.addEventListener('resize', this._onResize);
+
+    this._heroEl = document.getElementById('cp-hero');
+    this._onScroll = () => {
+      const h = this._heroEl ? this._heroEl.offsetHeight : 600;
+      const scrolled = window.scrollY > 40;
+      const showSticky = window.scrollY > h * 0.85;
+      if (scrolled !== this.state.scrolled || showSticky !== this.state.showSticky) {
+        this.setState({ scrolled, showSticky });
+      }
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+  }
+
+  componentWillUnmount() {
+    if (this._observer) this._observer.disconnect();
+    window.removeEventListener('resize', this._onResize);
+    window.removeEventListener('scroll', this._onScroll);
+  }
+
+  toggleFaq(i) {
+    this.setState((s) => ({ openFaq: s.openFaq === i ? null : i }));
+  }
+
+  renderVals() {
+    const revealIds = ['intro','projetos','comparador','galeria','execucao','oportunidade','comofunciona','destaque31','destaque36','preview','paraquem','escala','explore','faq','aviso','ctafinal'];
+    const reveal = {};
+    revealIds.forEach((id) => {
+      const on = !!this.state.revealed[id];
+      reveal[id] = {
+        opacity: on ? 1 : 0,
+        transform: on ? 'translateY(0)' : 'translateY(28px)',
+        transition: 'opacity 0.9s cubic-bezier(.16,1,.3,1), transform 0.9s cubic-bezier(.16,1,.3,1)'
+      };
+    });
+
+    const comparatorRows = [
+      { label: 'Área', v15: '15m²', v31: '31m²', v36: '36m² totais (31m² + anexo de 5m²)' },
+      { label: 'Configuração', v15: 'Compacto', v31: 'A-Frame', v36: 'A-Frame + Anexo' },
+      { label: 'Mezanino', v15: 'Não', v31: 'Sim', v36: 'Sim' },
+      { label: 'Anexo', v15: 'Não', v31: 'Não', v36: '5m²' },
+      { label: 'Estrutura', v15: 'Metálica', v31: 'Metálica', v36: 'Metálica' },
+      { label: 'Conteúdo', v15: 'Manual de Montagem', v31: 'Manual de Montagem', v36: 'Manual de Montagem / material do projeto' },
+      { label: 'Preço atual', v15: 'R$ 197,90', v31: 'R$ 247,90', v36: 'R$ 297,90' },
+      { label: 'Parcelamento', v15: '3x R$ 65,97 sem juros', v31: '3x R$ 82,63 sem juros', v36: '3x R$ 99,30 sem juros' },
+    ];
+
+    const offerModels = [
+      { name: '15M²', price: 'R$ 197,90', installment: '3x de R$ 65,97 sem juros' },
+      { name: '31M²', price: 'R$ 247,90', installment: '3x de R$ 82,63 sem juros' },
+      { name: '36M² TOTAIS', price: 'R$ 297,90', installment: '3x de R$ 99,30 sem juros' },
+    ];
+
+    const executionSteps = [
+      { n: '01', t: 'CHALÉ FINALIZADO' },
+      { n: '02', t: 'DESENHO TÉCNICO' },
+      { n: '03', t: 'ESTRUTURA' },
+      { n: '04', t: 'MATERIAL DIGITAL' },
+      { n: '05', t: 'PLANEJAMENTO' },
+    ];
+
+    const howSteps = [
+      { n: '01', t: 'ESCOLHA O MODELO', d: 'Compare as opções disponíveis.' },
+      { n: '02', t: 'CONHEÇA O MATERIAL', d: 'Veja exatamente o que está incluído em cada produto.' },
+      { n: '03', t: 'COMPRE', d: 'Finalize sua compra através do checkout.' },
+      { n: '04', t: 'ACESSE', d: 'Receba o material digital após a confirmação do pagamento.' },
+      { n: '05', t: 'PLANEJE SUA EXECUÇÃO', d: 'Consulte o material durante o planejamento junto aos profissionais envolvidos.' },
+    ];
+
+    const publics = [
+      { n: '01', title: 'CONSTRUIR PARA USO PRÓPRIO', desc: 'Para proprietários de terreno que desejam construir seu próprio chalé.' },
+      { n: '02', title: 'CONSTRUIR PARA HOSPEDAGEM', desc: 'Para investidores e proprietários de pousadas interessados em novas unidades.' },
+      { n: '03', title: 'CONSTRUIR PROFISSIONALMENTE', desc: 'Para construtores, serralheiros, carpinteiros e profissionais envolvidos na execução.' },
+    ];
+
+    const scaleBlocks = [
+      { area: '15M²', tag: 'MODELO COMPACTO', desc: 'Chalé compacto com estrutura metálica, desenvolvido para uma proposta de menor escala dentro da coleção Cabana Project.' },
+      { area: '31M²', tag: 'A-FRAME COM MEZANINO', desc: 'Modelo A-Frame de 31m² com mezanino e estrutura metálica.' },
+      { area: '31M² + ANEXO 5M² (36M² TOTAIS)', tag: 'VERSÃO AMPLIADA', desc: 'Versão ampliada do Chalé A-Frame de 31m², acrescentando um anexo de 5m² com estrutura metálica.' },
+    ];
+
+    const finalOffers = [
+      { name: '15M²', old: 'R$ 247,90', price: 'R$ 197,90', installment: '3x R$ 65,97', href: 'Cabana Project - 15m2 (Pagina Individual).dc.html', cta: 'ESCOLHER 15M²' },
+      { name: '31M²', old: 'R$ 297,90', price: 'R$ 247,90', installment: '3x R$ 82,63', href: 'Cabana Project - 31m2 (Pagina Individual).dc.html', cta: 'ESCOLHER 31M²' },
+      { name: '31M² + ANEXO · 36M² TOTAIS', old: 'R$ 347,90', price: 'R$ 297,90', installment: '3x R$ 99,30', href: 'Cabana Project - 31m2+Anexo 36m2 (Pagina Individual).dc.html', cta: 'ESCOLHER 36M²' },
+    ];
+
+    const exploreItems = [
+      { title: '15M² · R$ 197,90', href: 'Cabana Project - 15m2 (Pagina Individual).dc.html' },
+      { title: '31M² · R$ 247,90', href: 'Cabana Project - 31m2 (Pagina Individual).dc.html' },
+      { title: '31M² + ANEXO 5M² (36M² TOTAIS) · R$ 297,90', href: 'Cabana Project - 31m2+Anexo 36m2 (Pagina Individual).dc.html' },
+    ];
+
+    const faqData = [
+      { q: 'O que é a Cabana Project?', a: 'A Cabana Project reúne materiais técnicos digitais desenvolvidos para diferentes modelos de chalés, ajudando a compreender melhor cada construção e seu processo de execução.' },
+      { q: 'Os produtos são digitais?', a: 'Sim. Todos os materiais comercializados pela Cabana Project são digitais, com acesso disponibilizado após a confirmação da compra.' },
+      { q: 'O chalé físico está incluso?', a: 'Não. Os produtos são materiais técnicos digitais; a construção fica a cargo do comprador e dos profissionais envolvidos.' },
+      { q: 'Todos os projetos possuem o mesmo conteúdo?', a: 'Não. Cada produto informa individualmente o que está incluso, podendo variar entre manual de montagem, plantas, detalhamentos e materiais complementares.' },
+      { q: 'Como sei o que está incluso em cada modelo?', a: 'A página de cada projeto detalha exatamente o conteúdo disponível para aquele modelo específico.' },
+      { q: 'Como recebo meu material?', a: 'O acesso é digital, disponibilizado após a confirmação do pagamento.' },
+      { q: 'Os materiais substituem profissionais responsáveis?', a: 'Não. Os materiais possuem caráter orientativo e não substituem a responsabilidade técnica de profissionais habilitados quando exigida por normas locais.' },
+      { q: 'Posso utilizar o material em qualquer terreno?', a: 'Os materiais apresentam os modelos de referência. Condições específicas de cada terreno podem exigir adequações.' },
+      { q: 'Os projetos elétrico e hidráulico estão inclusos?', a: 'Não. Os projetos complementares de elétrica e hidráulica são disponibilizados separadamente e podem ser adicionados durante a compra quando disponíveis para o modelo escolhido.' },
+      { q: 'Qual é a diferença entre os três modelos?', a: 'O modelo de 15m² é a opção compacta da coleção. O modelo de 31m² possui configuração A-Frame com mezanino. A versão ampliada mantém o chalé principal de 31m² e acrescenta um anexo de 5m², totalizando 36m².' },
+      { q: 'A versão de 36m² é um chalé diferente?', a: 'Ela parte do modelo A-Frame de 31m² e acrescenta um anexo de 5m², chegando a 36m² totais.' },
+      { q: 'O valor atual é promocional?', a: 'Sim. Os valores apresentados fazem parte da condição especial de lançamento da coleção Cabana Project e poderão ser atualizados posteriormente.' },
+      { q: 'Posso parcelar?', a: 'Sim. A compra pode ser realizada em até 3x sem juros no cartão.' },
+      { q: 'Existe desconto à vista?', a: 'O valor promocional apresentado é o preço atual do produto.' },
+      { q: 'O preço é do chalé pronto?', a: 'Não. Os valores apresentados são referentes aos materiais digitais indicados na página de cada modelo. O chalé físico não está incluso.' },
+    ];
+    const faqs = faqData.map((item, i) => {
+      const open = this.state.openFaq === i;
+      return {
+        ...item,
+        sign: open ? '−' : '+',
+        toggle: () => this.toggleFaq(i),
+        bodyStyle: { maxHeight: open ? '240px' : '0px', overflow: 'hidden', transition: 'max-height 0.35s ease' }
+      };
+    });
+
+    const isMobile = this.state.isMobile;
+    const scrolled = this.state.scrolled;
+
+    return {
+      reveal, comparatorRows, offerModels, finalOffers, executionSteps, howSteps, publics, scaleBlocks, exploreItems, faqs,
+      isMobile,
+      showNav: !isMobile,
+      headerBg: scrolled ? '#FFFFFF' : 'transparent',
+      headerBorder: scrolled ? '1px solid #D9D9D9' : '1px solid transparent',
+      navColor: scrolled ? '#101010' : '#FFFFFF',
+      logoFilter: scrolled ? 'none' : 'invert(1) brightness(1.6)',
+      headerBtnBg: scrolled ? '#101010' : 'rgba(255,255,255,0.95)',
+      headerBtnColor: scrolled ? '#FFFFFF' : '#101010',
+      headerBtnBorder: scrolled ? '#101010' : 'transparent',
+      showStickyBar: isMobile && this.state.showSticky,
+    };
+  }
+}
+</script>
+</body>
+</html>
