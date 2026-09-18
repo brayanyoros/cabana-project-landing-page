@@ -13,6 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="./image-slot.js"></script>
+<link rel="stylesheet" href="./site.css">
 <style id="cp-resets">
   * { box-sizing: border-box; }
   body { margin: 0; background: #F4F2ED; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
@@ -25,15 +26,15 @@
 <div style="background:#F4F2ED;color:#101010;overflow-x:hidden;position:relative;">
 
   <!-- TOP BAR -->
-  <div style="position:fixed;top:0;left:0;right:0;z-index:101;background:#101010;padding:9px clamp(20px,5vw,64px);display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;">
-    <span style="font-size:12px;font-weight:600;letter-spacing:0.04em;color:#F4F2ED;">CONDIÇÃO ESPECIAL DE LANÇAMENTO — R$ 247,90 <span style="color:#8E8E8E;">· ATÉ 3X SEM JUROS</span></span>
+  <div class="cp-topbar" style="position:fixed;top:0;left:0;right:0;z-index:101;background:#101010;padding:9px clamp(20px,5vw,64px);display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;">
+    <span style="font-size:12px;font-weight:600;letter-spacing:0.04em;color:#F4F2ED;">CONDIÇÃO ESPECIAL DE LANÇAMENTO — R$ 247,90 <span class="cp-hide-sm" style="color:#8E8E8E;">· ATÉ 3X SEM JUROS</span></span>
     <a href="#conversao" style="font-size:12px;font-weight:600;letter-spacing:0.06em;color:#FFFFFF;border-bottom:1px solid #8E8E8E;padding-bottom:2px;white-space:nowrap;">GARANTIR CONDIÇÃO</a>
   </div>
 
   <!-- HEADER -->
   <header style="position:fixed;top:36px;left:0;right:0;z-index:100;background:{{ headerBg }};border-bottom:{{ headerBorder }};transition:background 0.4s ease, border-color 0.4s ease;">
-    <div style="max-width:1280px;margin:0 auto;padding:18px clamp(20px,5vw,64px);display:flex;align-items:center;justify-content:space-between;gap:24px;">
-      <img src="uploads/cabana-project-logo.png" alt="Cabana Project" style="height:30px;width:auto;filter:{{ logoFilter }};transition:filter 0.4s ease;" />
+    <div class="cp-header-inner" style="max-width:1280px;margin:0 auto;padding:18px clamp(20px,5vw,64px);display:flex;align-items:center;justify-content:space-between;gap:24px;">
+      <a href="index.html"><img class="cp-logo" src="uploads/logo-escuro.png" alt="Cabana Project" style="height:40px;width:auto;filter:{{ logoFilter }};transition:filter 0.4s ease;" /></a>
       <sc-if value="{{ showNav }}" hint-placeholder-val="{{ true }}">
         <nav style="display:flex;align-items:center;gap:40px;">
           <a href="#manual" style="font-size:14px;font-weight:500;color:{{ navColor }};letter-spacing:0.01em;">O Manual</a>
@@ -42,7 +43,7 @@
           <a href="#faq" style="font-size:14px;font-weight:500;color:{{ navColor }};letter-spacing:0.01em;">Dúvidas</a>
         </nav>
       </sc-if>
-      <a href="#conversao" style="flex-shrink:0;background:{{ headerBtnBg }};color:{{ headerBtnColor }};padding:13px 26px;font-size:13px;font-weight:600;letter-spacing:0.06em;border:1px solid {{ headerBtnBorder }};">QUERO O MANUAL</a>
+      <a class="cp-header-btn" href="#conversao" style="flex-shrink:0;white-space:nowrap;background:{{ headerBtnBg }};color:{{ headerBtnColor }};padding:13px 26px;font-size:13px;font-weight:600;letter-spacing:0.06em;border:1px solid {{ headerBtnBorder }};">QUERO O MANUAL</a>
     </div>
   </header>
 
@@ -60,7 +61,7 @@
       <p style="font-size:clamp(16px,1.6vw,19px);line-height:1.6;color:#F4F2ED;max-width:520px;margin:0 0 36px;">Manual de Montagem · Chalé A-Frame 31m²</p>
       <div style="display:inline-block;text-align:left;">
         <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;color:#101010;background:#FFFFFF;padding:5px 12px;width:max-content;margin-bottom:14px;">OFERTA DE LANÇAMENTO</div>
-        <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:6px;">
+        <div class="cp-price" style="display:flex;align-items:baseline;gap:14px;margin-bottom:6px;">
           <span style="font-size:16px;color:#D9D9D9;text-decoration:line-through;">De R$ 297,90</span>
           <span style="font-family:'Manrope',sans-serif;font-size:36px;font-weight:800;color:#FFFFFF;">R$ 247,90</span>
         </div>
@@ -85,7 +86,7 @@
 
   <!-- 3: PRIMEIRO IMPACTO -->
   <section style="max-width:1280px;margin:0 auto;padding:clamp(80px,10vw,160px) clamp(20px,5vw,64px);">
-    <div data-reveal-id="impact" style="{{ reveal.impact }}">
+    <div data-reveal-id="impact" style="display:block;{{ reveal.impact }}">
       <h2 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(34px,5.5vw,64px);line-height:1.05;letter-spacing:-0.01em;margin:0 0 24px;max-width:760px;">NÃO CONSTRUA<br/>APENAS OLHANDO<br/>UMA FOTO.</h2>
       <p style="font-size:clamp(16px,1.6vw,19px);line-height:1.6;color:#252525;max-width:520px;margin:0 0 56px;">Entenda como este chalé é estruturado antes de levar o projeto para o terreno.</p>
       <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;background:#D9D9D9;">
@@ -98,7 +99,7 @@
 
   <!-- 4: DO CHALÉ PARA A ESTRUTURA -->
   <section id="chale" style="position:relative;background:#101010;padding:0;">
-    <div data-reveal-id="structure" style="{{ reveal.structure }}">
+    <div data-reveal-id="structure" style="display:block;{{ reveal.structure }}">
       <div style="position:relative;width:100%;aspect-ratio:16/8;min-height:420px;">
         <image-slot id="structure-transition" shape="rect" placeholder="Composição: foto do chalé fundindo-se com estrutura metálica / desenho técnico"></image-slot>
       </div>
@@ -116,17 +117,17 @@
 
   <!-- 5: CONHEÇA O MODELO -->
   <section style="max-width:1280px;margin:0 auto;padding:clamp(80px,10vw,140px) clamp(20px,5vw,64px);">
-    <div data-reveal-id="gallery" style="{{ reveal.gallery }}">
+    <div data-reveal-id="gallery" style="display:block;{{ reveal.gallery }}">
       <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:48px;">
         <h2 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(30px,4.5vw,52px);line-height:1.1;margin:0;max-width:520px;">31M² PENSADOS<br/>NOS DETALHES.</h2>
         <div style="display:flex;gap:28px;flex-wrap:wrap;">
           <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;color:#A08868;border-bottom:1px solid #A08868;padding-bottom:6px;">31M²</span>
-          <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;color:#A08866;border-bottom:1px solid #A08868;padding-bottom:6px;">MEZANINO</span>
+          <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;color:#A08868;border-bottom:1px solid #A08868;padding-bottom:6px;">MEZANINO</span>
           <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;color:#A08868;border-bottom:1px solid #A08868;padding-bottom:6px;">A-FRAME</span>
           <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;color:#A08868;border-bottom:1px solid #A08868;padding-bottom:6px;">ESTRUTURA METÁLICA</span>
         </div>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(4,minmax(160px,1fr));grid-template-rows:repeat(2,minmax(160px,1fr));gap:12px;">
+      <div class="cp-gallery" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(2,240px);gap:12px;">
         <image-slot id="gallery-main" shape="rect" style="grid-column:span 2;grid-row:span 2;" placeholder="Exterior — imagem principal"></image-slot>
         <image-slot id="gallery-b" shape="rect" style="grid-column:span 2;" placeholder="Interior"></image-slot>
         <image-slot id="gallery-c" shape="rect" placeholder="Mezanino"></image-slot>
@@ -137,7 +138,7 @@
 
   <!-- 6: O MANUAL / TIMELINE -->
   <section id="manual" style="background:#FFFFFF;padding:clamp(80px,10vw,140px) 0;">
-    <div data-reveal-id="manual" style="{{ reveal.manual }}max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,64px);">
+    <div data-reveal-id="manual" style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,64px);{{ reveal.manual }}">
       <h2 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(30px,4.5vw,52px);line-height:1.1;margin:0 0 20px;">DA BASE<br/>À COBERTURA.</h2>
       <p style="font-size:clamp(16px,1.6vw,18px);line-height:1.6;color:#252525;max-width:560px;margin:0 0 64px;">Um material desenvolvido para apresentar de maneira visual e sequencial as principais etapas de montagem deste modelo.</p>
       <div>
@@ -155,7 +156,7 @@
 
   <!-- 7: PREVIEW DO PRODUTO -->
   <section id="conteudo" style="background:#F4F2ED;padding:clamp(80px,10vw,140px) 0;">
-    <div data-reveal-id="preview" style="{{ reveal.preview }}max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,64px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(40px,6vw,96px);align-items:center;">
+    <div class="cp-split" data-reveal-id="preview" style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,64px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(40px,6vw,96px);align-items:center;{{ reveal.preview }}">
       <div>
         <h2 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(30px,4.5vw,48px);line-height:1.1;margin:0 0 20px;">NÃO É APENAS<br/>UMA PLANTA.</h2>
         <p style="font-size:clamp(16px,1.6vw,18px);line-height:1.6;color:#252525;max-width:420px;">Veja algumas das informações presentes no Manual de Montagem.</p>
@@ -179,19 +180,19 @@
 
   <!-- 8: DE FOTO PARA EXECUÇÃO -->
   <section style="max-width:1280px;margin:0 auto;padding:clamp(80px,10vw,140px) clamp(20px,5vw,64px);">
-    <div data-reveal-id="execution" style="{{ reveal.execution }}">
+    <div data-reveal-id="execution" style="display:block;{{ reveal.execution }}">
       <h2 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(30px,4.5vw,52px);line-height:1.1;margin:0 0 56px;max-width:760px;">DO QUE VOCÊ VÊ<br/>PARA O QUE PRECISA EXECUTAR.</h2>
-      <div style="display:grid;grid-template-columns:repeat(3,minmax(220px,1fr));gap:32px;">
+      <div class="cp-cols-3" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;">
         <div>
-          <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:16px;"><span style="font-family:'Manrope',sans-serif;font-size:14px;font-weight:600;color:#A08868;">01</span><span style="font-size:14px;font-weight:600;letter-spacing:0.06em;">O MODELO</span></div>
+          <div class="cp-price" style="display:flex;align-items:baseline;gap:12px;margin-bottom:16px;"><span style="font-family:'Manrope',sans-serif;font-size:14px;font-weight:600;color:#A08868;">01</span><span style="font-size:14px;font-weight:600;letter-spacing:0.06em;">O MODELO</span></div>
           <image-slot id="exec-modelo" shape="rect" style="aspect-ratio:4/5;" placeholder="Chalé pronto"></image-slot>
         </div>
         <div>
-          <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:16px;"><span style="font-family:'Manrope',sans-serif;font-size:14px;font-weight:600;color:#A08868;">02</span><span style="font-size:14px;font-weight:600;letter-spacing:0.06em;">O DETALHAMENTO</span></div>
+          <div class="cp-price" style="display:flex;align-items:baseline;gap:12px;margin-bottom:16px;"><span style="font-family:'Manrope',sans-serif;font-size:14px;font-weight:600;color:#A08868;">02</span><span style="font-size:14px;font-weight:600;letter-spacing:0.06em;">O DETALHAMENTO</span></div>
           <image-slot id="exec-detalhamento" shape="rect" style="aspect-ratio:4/5;" placeholder="Página / desenho técnico"></image-slot>
         </div>
         <div>
-          <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:16px;"><span style="font-family:'Manrope',sans-serif;font-size:14px;font-weight:600;color:#A08868;">03</span><span style="font-size:14px;font-weight:600;letter-spacing:0.06em;">A EXECUÇÃO</span></div>
+          <div class="cp-price" style="display:flex;align-items:baseline;gap:12px;margin-bottom:16px;"><span style="font-family:'Manrope',sans-serif;font-size:14px;font-weight:600;color:#A08868;">03</span><span style="font-size:14px;font-weight:600;letter-spacing:0.06em;">A EXECUÇÃO</span></div>
           <image-slot id="exec-execucao" shape="rect" style="aspect-ratio:4/5;" placeholder="Estrutura / construção em andamento"></image-slot>
         </div>
       </div>
@@ -200,9 +201,9 @@
 
   <!-- 9: PARA QUEM É -->
   <section style="background:#FFFFFF;padding:clamp(80px,10vw,140px) 0;">
-    <div data-reveal-id="forquem" style="{{ reveal.forquem }}max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,64px);">
+    <div data-reveal-id="forquem" style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,64px);{{ reveal.forquem }}">
       <h2 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(30px,4.5vw,52px);line-height:1.1;margin:0 0 56px;max-width:640px;">PARA QUEM QUER<br/>TIRAR O CHALÉ<br/>DO PAPEL.</h2>
-      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));">
+      <div class="cp-list-2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));">
         <sc-for list="{{ profiles }}" as="profile" hint-placeholder-count="6">
           <div style="padding:28px 0;border-top:1px solid #D9D9D9;padding-right:24px;">
             <span style="font-family:'Manrope',sans-serif;font-size:clamp(18px,2vw,24px);font-weight:700;">{{ profile }}</span>
@@ -214,9 +215,9 @@
 
   <!-- 10: O QUE VOCÊ RECEBE -->
   <section style="background:#F4F2ED;padding:clamp(80px,10vw,140px) 0;">
-    <div data-reveal-id="receive" style="{{ reveal.receive }}max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,64px);">
+    <div data-reveal-id="receive" style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,64px);{{ reveal.receive }}">
       <h2 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(30px,4.5vw,52px);line-height:1.1;margin:0 0 56px;">O QUE ESTÁ<br/>DENTRO DO MANUAL.</h2>
-      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px;">
+      <div class="cp-list-2" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px;">
         <sc-for list="{{ receiveItems }}" as="item" hint-placeholder-count="11">
           <div style="display:flex;align-items:center;gap:16px;padding:18px 0;border-top:1px solid #D9D9D9;">
             <span style="width:14px;height:1px;background:#101010;flex-shrink:0;"></span>
@@ -229,9 +230,9 @@
 
   <!-- 11: COMO FUNCIONA -->
   <section style="max-width:1280px;margin:0 auto;padding:clamp(80px,10vw,140px) clamp(20px,5vw,64px);">
-    <div data-reveal-id="how" style="{{ reveal.how }}">
+    <div data-reveal-id="how" style="display:block;{{ reveal.how }}">
       <h2 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(30px,4.5vw,48px);line-height:1.1;margin:0 0 56px;">COMO FUNCIONA.</h2>
-      <div style="display:grid;grid-template-columns:repeat(4,minmax(180px,1fr));gap:32px;">
+      <div class="cp-cols-4" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;">
         <sc-for list="{{ howSteps }}" as="step" hint-placeholder-count="4">
           <div style="border-top:1px solid #D9D9D9;padding-top:24px;">
             <div style="font-family:'Manrope',sans-serif;font-size:14px;font-weight:600;color:#A08868;margin-bottom:16px;">{{ step.n }}</div>
@@ -249,23 +250,23 @@
       <image-slot id="conversion-bg" shape="rect" placeholder="Foto escurecida do chalé (fundo)"></image-slot>
     </div>
     <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(16,16,16,0.75) 0%, rgba(16,16,16,0.92) 100%);"></div>
-    <div data-reveal-id="conversion" style="{{ reveal.conversion }}position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,64px);text-align:center;display:flex;flex-direction:column;align-items:center;">
+    <div data-reveal-id="conversion" style="position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,64px);text-align:center;display:flex;flex-direction:column;align-items:center;{{ reveal.conversion }}">
       <h2 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(38px,6.5vw,76px);line-height:1.05;letter-spacing:-0.02em;color:#FFFFFF;margin:0 0 40px;">SEU CHALÉ<br/>PODE COMEÇAR<br/>POR AQUI.</h2>
       <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;color:#101010;background:#F4F2ED;padding:5px 12px;width:max-content;margin-bottom:16px;">OFERTA DE LANÇAMENTO</div>
-      <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:6px;justify-content:center;">
+      <div class="cp-price" style="display:flex;align-items:baseline;gap:14px;margin-bottom:6px;justify-content:center;">
         <span style="font-size:15px;color:#8E8E8E;text-decoration:line-through;">De R$ 297,90</span>
         <span style="font-family:'Manrope',sans-serif;font-size:clamp(30px,4vw,44px);font-weight:800;color:#FFFFFF;">R$ 247,90</span>
       </div>
       <div style="color:#D9D9D9;font-size:14px;margin-bottom:6px;">à vista ou 3x de R$ 82,63 sem juros</div>
       <div style="color:#8E8E8E;font-size:13px;margin-bottom:24px;">Economize R$ 50</div>
-      <a href="#" style="background:#FFFFFF;color:#101010;padding:22px 56px;font-size:15px;font-weight:700;letter-spacing:0.06em;transition:background 0.25s ease, transform 0.25s ease;" style-hover="background:#F4F2ED;transform:translateY(-2px);">GARANTIR CONDIÇÃO ATUAL</a>
+      <a class="cp-cta-big" href="#" style="display:inline-block;background:#FFFFFF;color:#101010;padding:22px 56px;font-size:15px;font-weight:700;letter-spacing:0.06em;transition:background 0.25s ease, transform 0.25s ease;" style-hover="background:#F4F2ED;transform:translateY(-2px);">GARANTIR CONDIÇÃO ATUAL</a>
       <div style="color:#D9D9D9;font-size:13px;margin-top:20px;">Produto digital · Acesso após confirmação da compra. Projetos complementares de elétrica e hidráulica disponíveis separadamente.</div>
     </div>
   </section>
 
   <!-- 13: FAQ -->
   <section id="faq" style="background:#FFFFFF;padding:clamp(80px,10vw,140px) 0;">
-    <div data-reveal-id="faq" style="{{ reveal.faq }}max-width:900px;margin:0 auto;padding:0 clamp(20px,5vw,64px);">
+    <div data-reveal-id="faq" style="max-width:900px;margin:0 auto;padding:0 clamp(20px,5vw,64px);{{ reveal.faq }}">
       <h2 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(30px,4.5vw,44px);line-height:1.1;margin:0 0 56px;">DÚVIDAS FREQUENTES.</h2>
       <div>
         <sc-for list="{{ faqs }}" as="item" hint-placeholder-count="11">
@@ -286,7 +287,7 @@
 
   <!-- 14: AVISO TÉCNICO -->
   <section style="background:#F4F2ED;padding:clamp(56px,7vw,96px) 0;">
-    <div data-reveal-id="aviso" style="{{ reveal.aviso }}max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,64px);display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:32px;border-top:1px solid #D9D9D9;border-bottom:1px solid #D9D9D9;padding-top:32px;padding-bottom:32px;">
+    <div class="cp-aviso" data-reveal-id="aviso" style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,64px);display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:32px;border-top:1px solid #D9D9D9;border-bottom:1px solid #D9D9D9;padding-top:32px;padding-bottom:32px;{{ reveal.aviso }}">
       <div style="font-size:13px;font-weight:600;letter-spacing:0.08em;color:#252525;">INFORMAÇÃO IMPORTANTE.</div>
       <p style="font-size:14px;line-height:1.7;color:#252525;margin:0;max-width:720px;">Este material possui caráter orientativo e foi desenvolvido com base no modelo apresentado. Condições específicas do terreno, fundação, estrutura e legislação local podem exigir adequações. A execução deve respeitar as normas aplicáveis e contar com profissionais habilitados quando necessário.</p>
     </div>
@@ -298,7 +299,7 @@
       <image-slot id="ctafinal-bg" shape="rect" placeholder="Foto cinematográfica do chalé A-Frame"></image-slot>
       <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(16,16,16,0.15) 0%, rgba(16,16,16,0.75) 100%);"></div>
     </div>
-    <div data-reveal-id="ctafinal" style="{{ reveal.ctafinal }}position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:80px clamp(20px,5vw,64px);width:100%;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:40px;">
+    <div data-reveal-id="ctafinal" style="position:relative;z-index:2;max-width:1280px;margin:0 auto;padding:80px clamp(20px,5vw,64px);width:100%;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:40px;{{ reveal.ctafinal }}">
       <h2 style="font-family:'Manrope',sans-serif;font-weight:800;font-size:clamp(34px,5.5vw,64px);line-height:1.05;color:#FFFFFF;margin:0;max-width:520px;">31M².<br/>UM A-FRAME.<br/>UM PONTO DE PARTIDA.</h2>
       <div>
         <div style="color:#D9D9D9;font-size:13px;font-weight:500;margin-bottom:6px;">Manual de Montagem<br/>Chalé A-Frame 31m²</div>
@@ -309,11 +310,12 @@
   </section>
 
   <!-- 16: FOOTER -->
-  <footer style="background:#101010;padding:64px 0 32px;">
+  <footer class="cp-footer" style="background:#101010;padding:64px 0 32px;">
     <div style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,64px);">
       <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:48px;padding-bottom:48px;border-bottom:1px solid #252525;">
-        <img src="uploads/cabana-project-logo.png" alt="Cabana Project" style="height:34px;filter:invert(1) brightness(1.4);" />
+        <img class="cp-footer-logo" src="uploads/logo-claro.png" alt="Cabana Project" style="height:44px;width:auto;" />
         <nav style="display:flex;gap:32px;flex-wrap:wrap;">
+          <a href="index.html" style="font-size:14px;color:#D9D9D9;" style-hover="color:#A08868;">Home</a>
           <a href="#manual" style="font-size:14px;color:#D9D9D9;" style-hover="color:#A08868;">Manual</a>
           <a href="#" style="font-size:14px;color:#D9D9D9;" style-hover="color:#A08868;">Contato</a>
           <a href="#" style="font-size:14px;color:#D9D9D9;" style-hover="color:#A08868;">Suporte</a>
@@ -352,7 +354,21 @@ class Component extends DCLogic {
     window.addEventListener('resize', this._onResize);
 
     this._heroEl = document.getElementById('cp-hero');
+    this._revealVisible = () => {
+      const limit = window.innerHeight * 0.92;
+      const ids = [];
+      document.querySelectorAll('[data-reveal-id]').forEach((el) => {
+        const id = el.getAttribute('data-reveal-id');
+        if (!this.state.revealed[id] && el.getBoundingClientRect().top < limit) ids.push(id);
+      });
+      if (ids.length) this.setState((s) => {
+        const revealed = { ...s.revealed };
+        ids.forEach((id) => { revealed[id] = true; });
+        return { revealed };
+      });
+    };
     this._onScroll = () => {
+      this._revealVisible();
       const h = this._heroEl ? this._heroEl.offsetHeight : 600;
       const scrolled = window.scrollY > 40;
       const showSticky = window.scrollY > h * 0.85;
@@ -361,6 +377,7 @@ class Component extends DCLogic {
       }
     };
     window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._revealVisible();
   }
 
   componentWillUnmount() {

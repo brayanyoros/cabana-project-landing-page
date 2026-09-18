@@ -1,0 +1,73 @@
+/* Cabana Project — ajustes de alinhamento e responsividade compartilhados por todas as páginas.
+   As páginas usam estilos inline; por isso as regras de breakpoint usam !important. */
+
+/* ---------- Barra superior + cabeçalho ---------- */
+.cp-topbar { height: 36px; flex-wrap: nowrap !important; white-space: nowrap; overflow: hidden; }
+.cp-header-inner { padding-top: 18px !important; padding-bottom: 18px !important; }
+.cp-logo { display: block; height: 40px !important; width: auto; }
+.cp-footer-logo { display: block; height: 44px !important; width: auto; }
+
+/* ---------- Grades ---------- */
+.cp-gallery { grid-template-rows: repeat(2, 240px) !important; }
+.cp-steps-5 { grid-template-columns: repeat(5, minmax(0, 1fr)) !important; }
+.cp-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+.cp-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+.cp-divided > * + * { padding-left: 24px !important; }
+.cp-divided > *:last-child { border-right: 0 !important; }
+
+/* Linha de preço (valor antigo + valor atual) nunca quebra no meio */
+.cp-price { flex-wrap: wrap; row-gap: 4px !important; }
+.cp-price > span { white-space: nowrap; }
+
+/* ---------- Tablet ---------- */
+@media (max-width: 1024px) {
+  .cp-steps-5 { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; row-gap: 40px !important; }
+  .cp-cols-4 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; row-gap: 40px !important; }
+  .cp-gallery { grid-template-rows: repeat(2, 200px) !important; }
+}
+
+/* ---------- Celular / tablet estreito ---------- */
+@media (max-width: 880px) {
+  .cp-split { grid-template-columns: minmax(0, 1fr) !important; gap: 32px !important; }
+  .cp-split--media-last > image-slot { order: -1; }
+  .cp-cols-3 { grid-template-columns: minmax(0, 1fr) !important; }
+  .cp-divided > * { border-right: 0 !important; border-bottom: 1px solid var(--cp-divider, #D9D9D9); padding-left: 0 !important; padding-right: 0 !important; }
+  .cp-divided > *:last-child { border-bottom: 0; }
+  .cp-divided--dark { --cp-divider: #252525; }
+  .cp-divided--dark > * { padding-bottom: 32px !important; }
+  .cp-aviso { grid-template-columns: minmax(0, 1fr) !important; gap: 12px !important; }
+  .cp-model + .cp-model { margin-top: 0; }
+  .cp-model { padding-bottom: 56px !important; margin-bottom: 56px !important; }
+  .cp-model:last-child { padding-bottom: 0 !important; margin-bottom: 0 !important; }
+}
+
+@media (max-width: 640px) {
+  .cp-topbar { padding-left: 16px !important; padding-right: 16px !important; }
+  .cp-topbar, .cp-topbar * { font-size: 11px !important; letter-spacing: 0.04em !important; }
+  .cp-topbar > a { display: none !important; } /* o botão do cabeçalho já leva ao mesmo lugar */
+  .cp-hide-sm { display: none !important; }
+  .cp-header-inner { padding-left: 16px !important; padding-right: 16px !important; }
+  .cp-logo { height: 38px !important; }
+  .cp-model > image-slot { aspect-ratio: 4 / 3 !important; }
+  .cp-header-btn { padding: 11px 16px !important; font-size: 12px !important; }
+
+  .cp-list-2 { grid-template-columns: minmax(0, 1fr) !important; }
+  .cp-steps-5, .cp-cols-4 { grid-template-columns: minmax(0, 1fr) !important; row-gap: 0 !important; }
+  .cp-steps-5 > *, .cp-cols-4 > * { padding-bottom: 24px; }
+  .cp-media-4 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+
+  .cp-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; grid-template-rows: 220px 140px 140px !important; gap: 8px !important; }
+  .cp-gallery > :nth-child(1) { grid-column: span 2 !important; grid-row: auto !important; }
+  .cp-gallery > :nth-child(2) { grid-column: span 2 !important; }
+
+  .cp-cta { display: block !important; text-align: center; }
+  .cp-cta-big { padding-left: 24px !important; padding-right: 24px !important; width: 100%; text-align: center; }
+
+  .cp-equation { gap: 12px !important; flex-wrap: nowrap !important; }
+  .cp-equation > div > div:first-child { font-size: 26px !important; }
+  .cp-equation > div > div:last-child { font-size: 10px !important; }
+  .cp-equation > span { font-size: 20px !important; }
+
+  /* espaço para a barra fixa de compra no rodapé do celular */
+  .cp-footer { padding-bottom: 96px !important; }
+}
