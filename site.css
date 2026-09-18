@@ -7,6 +7,13 @@
 .cp-logo { display: block; height: 40px !important; width: auto; }
 .cp-footer-logo { display: block; height: 44px !important; width: auto; }
 
+/* ---------- Banner principal: uma imagem para computador, outra para celular ---------- */
+#hero-bg-mobile { display: none !important; }
+@media (max-width: 767px) {
+  #hero-bg { display: none !important; }
+  #hero-bg-mobile { display: block !important; }
+}
+
 /* ---------- Grades ---------- */
 .cp-gallery { grid-template-rows: repeat(2, 240px) !important; }
 .cp-steps-5 { grid-template-columns: repeat(5, minmax(0, 1fr)) !important; }
