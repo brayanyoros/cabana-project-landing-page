@@ -58,7 +58,7 @@ image-slot[src]::part(ring) { display: none; }
   .cp-hide-sm { display: none !important; }
   .cp-header-inner { padding-left: 16px !important; padding-right: 16px !important; }
   .cp-logo { height: 38px !important; }
-  .cp-model > image-slot { aspect-ratio: 4 / 3 !important; }
+  .cp-model > image-slot { aspect-ratio: 1 / 1 !important; }
   .cp-header-btn { padding: 11px 16px !important; font-size: 12px !important; }
 
   .cp-list-2 { grid-template-columns: minmax(0, 1fr) !important; }
