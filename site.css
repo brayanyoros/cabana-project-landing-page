@@ -7,6 +7,9 @@
 .cp-logo { display: block; height: 40px !important; width: auto; }
 .cp-footer-logo { display: block; height: 44px !important; width: auto; }
 
+/* Imagens já preenchidas não mostram a borda tracejada de "espaço para imagem" */
+image-slot[src]::part(ring) { display: none; }
+
 /* ---------- Banner principal: uma imagem para computador, outra para celular ---------- */
 #hero-bg-mobile { display: none !important; }
 @media (max-width: 767px) {
